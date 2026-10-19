@@ -1,0 +1,24 @@
+INKY VIBES TATTOO — INSTALLATION
+
+1. Unzip this package.
+2. Upload the complete tattoo-animation folder to your web hosting, beside your existing HTML page. Keep its files and assets together.
+3. Paste this code inside your existing page's <body>, where you want the animation:
+
+<iframe
+  src="tattoo-animation/index.html"
+  title="Inky Vibes Tattoo"
+  style="display:block;width:100%;height:100vh;height:100svh;border:0;"
+></iframe>
+
+4. Open your website online. Scroll inside the animation to pour ink and finish the tattoo. The VARAA AIKA NYT button opens the booking form after the tattoo is finished.
+
+The iframe fills one screen and keeps the animation's styling separate from your existing page. Animation scrolling happens inside this frame.
+
+You can also open tattoo-animation/index.html as a standalone page on your hosting.
+
+BOOKING
+The package includes your FI/EN booking form and the Google Apps Script endpoint you supplied. It loads live unavailable dates and submits booking requests and images to that endpoint. Calendar, logo and fonts use internet connections. Browser-native date selection is used if Flatpickr is unavailable.
+
+Run it through your hosting (or an HTTP development server), rather than opening the files directly from disk.
+
+Included source version: fe0849eb40bf36b59674d95c373f682e7025401e
