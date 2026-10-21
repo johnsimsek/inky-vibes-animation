@@ -7,6 +7,25 @@
   <meta name="description" content="Inky Vibes Tattoo, Kouvola. Seuraa tatuoinnin syntyä vierityksellä liikkuvassa studiokokemuksessa.">
   <title>Inky Vibes Tattoo — Your skin. Your story.</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* style.css'in ezememesi için tüm kurallara !important ekledik */
+    #finish-cta {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
+
+    #book-now {
+      width: auto !important;
+      max-width: 200px !important;
+      padding: 8px 18px !important;
+      font-size: 11px !important;
+      letter-spacing: 1px !important;
+      border-radius: 0 !important; /* Ovalleşmeyi kesin olarak engeller, keskin kare/köşeli yapar */
+      cursor: pointer !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -157,8 +176,8 @@
         <div class="scene-shade"></div>
       </div>
 
-      <div id="finish-cta" aria-hidden="true" style="display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important;">
-        <button id="book-now" type="button" disabled tabindex="-1" style="width: auto !important; max-width: none !important; padding: 10px 22px !important; font-size: 12px !important; letter-spacing: 1.5px !important; border-radius: 2px !important; cursor: pointer !important;">
+      <div id="finish-cta" aria-hidden="true">
+        <button id="book-now" type="button" disabled tabindex="-1">
           VARAA AIKA NYT
         </button>
       </div>
