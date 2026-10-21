@@ -32,3 +32,15 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
   else init();
 })();
+/* Ana site içinde el simgesini alt menünün üstüne taşı */
+if (window.self !== window.top) {
+    const embeddedHandStyle = document.createElement("style");
+
+    embeddedHandStyle.textContent = `
+        .scroll-hand-hint {
+            bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+        }
+    `;
+
+    document.head.appendChild(embeddedHandStyle);
+}
