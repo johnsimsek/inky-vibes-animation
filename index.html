@@ -8,7 +8,7 @@
   <title>Inky Vibes Tattoo — Your skin. Your story.</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* style.css'in ezememesi için tüm kurallara !important ekledik */
+    /* style.css'i ezip butonu ince, ideal genişlikte ve kare formda tutuyoruz */
     #finish-cta {
       display: flex !important;
       justify-content: center !important;
@@ -18,11 +18,12 @@
 
     #book-now {
       width: auto !important;
-      max-width: 200px !important;
-      padding: 8px 18px !important;
-      font-size: 11px !important;
-      letter-spacing: 1px !important;
-      border-radius: 0 !important; /* Ovalleşmeyi kesin olarak engeller, keskin kare/köşeli yapar */
+      max-width: none !important;
+      /* Dikeyde ince (7px), yatayda geniş (22px), köşeler keskin kare (0) */
+      padding: 7px 22px !important;
+      font-size: 12px !important;
+      letter-spacing: 1.2px !important;
+      border-radius: 0 !important;
       cursor: pointer !important;
     }
   </style>
