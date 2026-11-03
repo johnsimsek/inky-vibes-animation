@@ -16,8 +16,7 @@
       width: 100% !important;
     }
 
-    /* BURADAKİ ID DEĞİŞTİRİLDİ Kİ app.js ESKİ FORMU AÇMASIN */
-    #custom-book-now {
+    #book-now {
       width: auto !important;
       max-width: none !important;
       /* Üst/alt çok ince (6px), sağ/sol geniş (32px) - keskin kare (0) */
@@ -26,9 +25,6 @@
       letter-spacing: 1.4px !important;
       border-radius: 0 !important;
       cursor: pointer !important;
-      background-color: #fff; /* Buton görünmezse arka plan rengini ekledik */
-      color: #000;
-      border: none;
     }
 
     /* Kaydırma (el) ikonunu aşağı itmek için eklenen kod */
@@ -190,8 +186,7 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
-        <!-- YENİ SEKMEYE YÖNLENDİREN VE ID'Sİ DEĞİŞMİŞ BUTON -->
-        <button id="custom-book-now" type="button" onclick="window.open('https://ajanvaraus.inkyvibestattoo.com/', '_blank');">
+        <button id="book-now" type="button" onclick="window.parent.postMessage('goToBooking', '*'); return false;">
           VARAA AIKA NYT
         </button>
       </div>
@@ -202,6 +197,11 @@
     </div>
   </section>
 </main>
+
+<dialog id="booking" aria-label="Ajanvaraus">
+  <button type="button" class="booking-close" aria-label="Sulje ajanvaraus">×</button>
+  <iframe id="booking-frame" title="Inky Vibes Tattoo — ajanvaraus" data-src="booking.html"></iframe>
+</dialog>
 
 <script src="app.js"></script>
 <script src="scroll-hint.js"></script>
