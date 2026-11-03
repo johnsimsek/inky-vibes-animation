@@ -8,6 +8,7 @@
   <title>Inky Vibes Tattoo — Your skin. Your story.</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* style.css'i ezip butonu ince, yatayda geniş ve keskin kare formda tutuyoruz */
     #finish-cta {
       display: flex !important;
       justify-content: center !important;
@@ -15,20 +16,22 @@
       width: 100% !important;
     }
 
-    /* BURADAKİ ID DEĞİŞTİRİLDİ */
-    #custom-book-btn {
+    /* BURADAKİ ID DEĞİŞTİRİLDİ Kİ app.js ESKİ FORMU AÇMASIN */
+    #custom-book-now {
       width: auto !important;
       max-width: none !important;
+      /* Üst/alt çok ince (6px), sağ/sol geniş (32px) - keskin kare (0) */
       padding: 6px 32px !important;
       font-size: 12px !important;
       letter-spacing: 1.4px !important;
       border-radius: 0 !important;
       cursor: pointer !important;
-      background: #fff; /* Butonun arka plan rengi yoksa eklenebilir, style.css'den geliyorsa silinebilir */
+      background-color: #fff; /* Buton görünmezse arka plan rengini ekledik */
       color: #000;
       border: none;
     }
 
+    /* Kaydırma (el) ikonunu aşağı itmek için eklenen kod */
     #scroll-hint, 
     .scroll-hint, 
     [class*="hint"], 
@@ -187,8 +190,8 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
-        <!-- BURADAKİ ID VE ONCLICK DEĞİŞTİRİLDİ -->
-        <button id="custom-book-btn" type="button" onclick="window.parent.postMessage('goToBooking', '*'); return false;">
+        <!-- YENİ SEKMEYE YÖNLENDİREN VE ID'Sİ DEĞİŞMİŞ BUTON -->
+        <button id="custom-book-now" type="button" onclick="window.open('https://ajanvaraus.inkyvibestattoo.com/', '_blank');">
           VARAA AIKA NYT
         </button>
       </div>
