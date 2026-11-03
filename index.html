@@ -8,7 +8,6 @@
   <title>Inky Vibes Tattoo — Your skin. Your story.</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* style.css'i ezip butonu ince, yatayda geniş ve keskin kare formda tutuyoruz */
     #finish-cta {
       display: flex !important;
       justify-content: center !important;
@@ -16,18 +15,20 @@
       width: 100% !important;
     }
 
-    #book-now {
+    /* BURADAKİ ID DEĞİŞTİRİLDİ */
+    #custom-book-btn {
       width: auto !important;
       max-width: none !important;
-      /* Üst/alt çok ince (6px), sağ/sol geniş (32px) - keskin kare (0) */
       padding: 6px 32px !important;
       font-size: 12px !important;
       letter-spacing: 1.4px !important;
       border-radius: 0 !important;
       cursor: pointer !important;
+      background: #fff; /* Butonun arka plan rengi yoksa eklenebilir, style.css'den geliyorsa silinebilir */
+      color: #000;
+      border: none;
     }
 
-    /* Kaydırma (el) ikonunu aşağı itmek için eklenen kod */
     #scroll-hint, 
     .scroll-hint, 
     [class*="hint"], 
@@ -186,7 +187,8 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
-        <button id="book-now" type="button" onclick="window.parent.postMessage('goToBooking', '*'); return false;">
+        <!-- BURADAKİ ID VE ONCLICK DEĞİŞTİRİLDİ -->
+        <button id="custom-book-btn" type="button" onclick="window.parent.postMessage('goToBooking', '*'); return false;">
           VARAA AIKA NYT
         </button>
       </div>
@@ -197,11 +199,6 @@
     </div>
   </section>
 </main>
-
-<dialog id="booking" aria-label="Ajanvaraus">
-  <button type="button" class="booking-close" aria-label="Sulje ajanvaraus">×</button>
-  <iframe id="booking-frame" title="Inky Vibes Tattoo — ajanvaraus" data-src="booking.html"></iframe>
-</dialog>
 
 <script src="app.js"></script>
 <script src="scroll-hint.js"></script>
