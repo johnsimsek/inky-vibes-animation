@@ -186,11 +186,9 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
-        <a href="https://ajanvaraus.inkyvibestattoo.com" style="text-decoration: none;">
-          <button id="book-now" type="button" style="pointer-events: none;">
-            VARAA AIKA NYT
-          </button>
-        </a>
+        <button id="book-now" type="button">
+          VARAA AIKA NYT
+        </button>
       </div>
 
       <div class="progress">
@@ -202,6 +200,23 @@
 
 <script src="app.js"></script>
 <script src="scroll-hint.js"></script>
+
+<!-- Kesin yönlendirme için app.js'in etkisini kıran kod bloğu -->
+<script>
+  window.addEventListener('load', function() {
+    var btn = document.getElementById('book-now');
+    if (btn) {
+      // Butonu kopyalayarak app.js'in ona bağladığı "dialog açma" görevini iptal ediyoruz
+      var newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+      
+      // Şimdi kendi temiz yönlendirmemizi ekliyoruz
+      newBtn.addEventListener('click', function() {
+        window.location.href = 'https://ajanvaraus.inkyvibestattoo.com';
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
