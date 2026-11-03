@@ -186,6 +186,7 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
+        <!-- Orijinal Buton (HTML'i hiç bozmadık) -->
         <button id="book-now" type="button">
           VARAA AIKA NYT
         </button>
@@ -201,21 +202,21 @@
 <script src="app.js"></script>
 <script src="scroll-hint.js"></script>
 
-<!-- Kesin yönlendirme için app.js'in etkisini kıran kod bloğu -->
+<!-- Tıklamayı app.js'den ÖNCE yakalayan koruma scripti -->
 <script>
-  window.addEventListener('load', function() {
-    var btn = document.getElementById('book-now');
+  document.addEventListener('click', function(event) {
+    // Tıklanan yer book-now butonu veya içindeki bir şey mi kontrol et
+    var btn = event.target.closest('#book-now');
+    
     if (btn) {
-      // Butonu kopyalayarak app.js'in ona bağladığı "dialog açma" görevini iptal ediyoruz
-      var newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
+      // Tıklamanın app.js'e ulaşmasını tamamen engeller
+      event.stopPropagation();
+      event.preventDefault();
       
-      // Şimdi kendi temiz yönlendirmemizi ekliyoruz
-      newBtn.addEventListener('click', function() {
-        window.location.href = 'https://ajanvaraus.inkyvibestattoo.com';
-      });
+      // Kendi sayfanıza direkt yönlendirme yapar
+      window.location.href = 'https://ajanvaraus.inkyvibestattoo.com';
     }
-  });
+  }, true); // Buradaki "true", olayı en erken aşamada (Capture) yakalamasını sağlar.
 </script>
 
 </body>
