@@ -16,18 +16,15 @@
       width: 100% !important;
     }
 
-    /* ID'yi book-now-direct olarak değiştirdik ki app.js buna dokunamasın */
-    #book-now-direct {
+    #book-now {
       width: auto !important;
       max-width: none !important;
+      /* Üst/alt çok ince (6px), sağ/sol geniş (32px) - keskin kare (0) */
       padding: 6px 32px !important;
       font-size: 12px !important;
       letter-spacing: 1.4px !important;
       border-radius: 0 !important;
       cursor: pointer !important;
-      background-color: #fff; /* Butonun standart rengini korumak için */
-      color: #000;
-      border: 1px solid #fff;
     }
 
     /* Kaydırma (el) ikonunu aşağı itmek için eklenen kod */
@@ -189,12 +186,10 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
-        <!-- app.js'den tamamen gizlenmiş ve normal linke dönüştürülmüş buton -->
-        <a href="https://ajanvaraus.inkyvibestattoo.com" style="text-decoration: none;">
-          <button id="book-now-direct" type="button">
-            VARAA AIKA NYT
-          </button>
-        </a>
+        <!-- Orijinal Buton (HTML'i hiç bozmadık) -->
+        <button id="book-now" type="button">
+          VARAA AIKA NYT
+        </button>
       </div>
 
       <div class="progress">
@@ -206,6 +201,23 @@
 
 <script src="app.js"></script>
 <script src="scroll-hint.js"></script>
+
+<!-- Tıklamayı app.js'den ÖNCE yakalayan koruma scripti -->
+<script>
+  document.addEventListener('click', function(event) {
+    // Tıklanan yer book-now butonu veya içindeki bir şey mi kontrol et
+    var btn = event.target.closest('#book-now');
+    
+    if (btn) {
+      // Tıklamanın app.js'e ulaşmasını tamamen engeller
+      event.stopPropagation();
+      event.preventDefault();
+      
+      // Kendi sayfanıza direkt yönlendirme yapar
+      window.location.href = 'https://ajanvaraus.inkyvibestattoo.com';
+    }
+  }, true); // Buradaki "true", olayı en erken aşamada (Capture) yakalamasını sağlar.
+</script>
 
 </body>
 </html>
