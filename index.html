@@ -186,7 +186,6 @@
       </div>
 
       <div id="finish-cta" aria-hidden="true">
-        <!-- Orijinal Buton (HTML'i hiç bozmadık) -->
         <button id="book-now" type="button">
           VARAA AIKA NYT
         </button>
@@ -202,21 +201,37 @@
 <script src="app.js"></script>
 <script src="scroll-hint.js"></script>
 
-<!-- Tıklamayı app.js'den ÖNCE yakalayan koruma scripti -->
+<!-- Tıklamayı app.js'den ÖNCE yakalayan ve mesaj gönderen koruma scripti -->
 <script>
+  // 1. Kysy pääsivustolta heti alussa kirjautumistilaa
+  window.parent.postMessage("checkLoginState", "*");
+
+  // 2. Kuuntele pääsivuston vastausta ja muuta napin teksti sen mukaan
+  window.addEventListener("message", function(event) {
+      if (event.data && event.data.action === "updateLoginState") {
+          var btn = document.getElementById("book-now");
+          if (btn) {
+              if (event.data.loggedIn) {
+                  btn.innerText = "VARAA AIKA NYT";
+              } else {
+                  btn.innerText = "KIRJAUDU SISÄÄN / VARAA";
+              }
+          }
+      }
+  });
+
+  // 3. Alkuperäinen tıklama-suoja
   document.addEventListener('click', function(event) {
-    // Tıklanan yer book-now butonu veya içindeki bir şey mi kontrol et
     var btn = event.target.closest('#book-now');
     
     if (btn) {
-      // Tıklamanın app.js'e ulaşmasını tamamen engeller
       event.stopPropagation();
       event.preventDefault();
       
-      // Kendi sayfanıza direkt yönlendirme yapar
-      window.location.href = 'https://ajanvaraus.inkyvibestattoo.com';
+      // Pyydä pääsivustoa hoitamaan varaus (koska se tietää kirjautumistiedot)
+      window.parent.postMessage("goToBooking", "*");
     }
-  }, true); // Buradaki "true", olayı en erken aşamada (Capture) yakalamasını sağlar.
+  }, true); 
 </script>
 
 </body>
