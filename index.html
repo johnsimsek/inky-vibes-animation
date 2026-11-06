@@ -209,18 +209,15 @@
 <!-- Tıklamayı app.js'den ÖNCE yakalayan ve mesaj gönderen koruma scripti -->
 <script>
   // 1. Kysy pääsivustolta heti alussa kirjautumistilaa
-  window.parent.postMessage("checkLoginState", "*");
+  window.parent.postMessage({ action: "checkLoginState" }, "*");
 
   // 2. Kuuntele pääsivuston vastausta ja muuta napin teksti sen mukaan
   window.addEventListener("message", function(event) {
-      if (event.data && event.data.action === "updateLoginState") {
+      let data = event.data;
+      if (data && data.action === "updateLoginState") {
           var btn = document.getElementById("book-now");
           if (btn) {
-              if (event.data.loggedIn) {
-                  btn.innerText = "VARAA AIKA NYT";
-              } else {
-                  btn.innerText = "VARAA AIKA";
-              }
+              btn.innerText = data.loggedIn ? "VARAA AIKA NYT" : "VARAA AIKA";
           }
       }
   });
@@ -234,7 +231,7 @@
       event.preventDefault();
       
       // Pyydä pääsivustoa hoitamaan varaus (koska se tietää kirjautumistiedot)
-      window.parent.postMessage("goToBooking", "*");
+      window.parent.postMessage({ action: "goToBooking" }, "*");
     }
   }, true); 
 </script>
